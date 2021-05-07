@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="page-header">
+    <div class="well">
+      <h3>Report</h3>
+    </div>
+  </div>
+  <div class="panel panel-default" *ngFor="let aresult of auditResults">
+    <div class="panel-heading">{{aresult.test}} - {{aresult.result.outcome}}</div>
+    <div class="panel-body" *ngIf="aresult.result.description">
+      <p>{{aresult.result.description}}</p>
+    </div>
+  </div>
+</div>
