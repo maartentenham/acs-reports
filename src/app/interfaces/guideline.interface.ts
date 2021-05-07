@@ -1,4 +1,4 @@
-import { SuccesCriterium } from "./succescriterium.interface";
+import { SuccessCriterium } from './succescriterium.interface';
 
 export interface Guideline {
   id: string;
@@ -6,5 +6,5 @@ export interface Guideline {
   num?: string;
   handle?: string;
   text?: string;
-  succescriteria?: SuccesCriterium[];
+  successcriteria?: SuccessCriterium[];
 }

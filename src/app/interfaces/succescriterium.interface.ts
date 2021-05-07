@@ -1,6 +1,6 @@
-import { Criteriumdetail } from "./criteriumdetail.interface";
+import { Criteriumdetail } from './criteriumdetail.interface';
 
-export interface SuccesCriterium {
+export interface SuccessCriterium {
   id: string;
   alt_id?: string[];
   num?: string;

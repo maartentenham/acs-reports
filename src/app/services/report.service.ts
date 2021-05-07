@@ -20,8 +20,12 @@ export class ReportService {
       prn.guidelines.forEach(gl => {
         gl.alt_id = [gl.id.split(':')[1]];
         gl.id  = this.findGuidelineId(gl.alt_id[0]);
-        console.log(gl)
-      })
+        gl.successcriteria.forEach(sc => {
+          sc.alt_id = [sc.id.split(':')[1]];
+          sc.id = this.findCriteriumId(sc.alt_id[0]);
+        });
+        console.log(gl);
+      });
     });
 
   }
@@ -34,6 +38,11 @@ export class ReportService {
 
   private findGuidelineId(altId: string): string {
     const query = 'principles.guidelines[alt_id=' + altId + '].id';
+    return this.jsonQuery(query, {data: principlesEn}).value;
+  }
+
+  private findCriteriumId(altId: string): string {
+    const query = 'principles.guidelines.successcriteria[alt_id=' + altId + '].id';
     return this.jsonQuery(query, {data: principlesEn}).value;
   }
 }
