@@ -22,7 +22,7 @@ export class UploadJsonComponent implements OnInit {
     fileReader.onload = (e) => {
       this.fileContent = fileReader.result.toString();
       this.fileContent = this.fileContent.replace(/@/gi, '');
-      this.reportService.report = JSON.parse(this.fileContent);
+      this.reportService.setResultReport(JSON.parse(this.fileContent));
       this.router.navigate(['show']);
     };
     fileReader.readAsText(file);

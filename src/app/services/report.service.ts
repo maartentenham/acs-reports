@@ -3,6 +3,7 @@ import principlesEn from '../data/wcag2-en.json';
 import principlesNl from '../data/wcag2-nl.json';
 import { Principle } from '../interfaces/principle.interface';
 import { Report } from '../interfaces/report.interface';
+import {AuditResult} from '../interfaces/auditresult.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,16 @@ import { Report } from '../interfaces/report.interface';
 export class ReportService {
 
   private rep: any;
+  private auditResults: AuditResult[];
   private finalReport: Report;
   private reportNl: Report = principlesNl;
   private reportEn: Report = principlesEn;
   private jsonQuery = require('json-query');
 
   constructor() {
+  }
+
+  public setResultReport(value: any): void {
     this.reportNl.principles.forEach( prn => {
       prn.guidelines.forEach(gl => {
         gl.alt_id = [gl.id.split(':')[1]];
@@ -24,17 +29,25 @@ export class ReportService {
           sc.alt_id = [sc.id.split(':')[1]];
           sc.id = this.findCriteriumId(sc.alt_id[0]);
         });
+      });
+    });
+
+    this.rep =  value;
+    this.auditResults = this.rep.graph[0].auditResult;
+    this.reportNl.principles.forEach( prn => {
+      prn.guidelines.forEach(gl => {
+        gl.successcriteria.forEach(sc => {
+          sc.result = this.auditResults.find(res => res.test === sc.id);
+        });
         console.log(gl);
       });
     });
 
   }
 
-  public set report(value: any) {
-    this.rep =  value;
+  public getReport(): Report {
+    return this.reportNl;
   }
-
-  public get report(): any { return this.rep}
 
   private findGuidelineId(altId: string): string {
     const query = 'principles.guidelines[alt_id=' + altId + '].id';

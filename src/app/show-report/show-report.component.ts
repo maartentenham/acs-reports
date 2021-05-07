@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ReportService} from '../services/report.service';
 import {AuditResult} from '../interfaces/auditResult.interface';
 import {Router} from '@angular/router';
+import {Report} from '../interfaces/report.interface';
 
 @Component({
   selector: 'app-show-report',
@@ -10,19 +11,12 @@ import {Router} from '@angular/router';
 })
 export class ShowReportComponent implements OnInit {
 
-  report: any;
-  auditResults: AuditResult[];
+  report: Report;
 
   constructor(private reportService: ReportService, private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.reportService.report) {
-      this.router.navigate(['']);
-    } else {
-      this.report = this.reportService.report;
-      this.auditResults = this.report.graph[0].auditResult;
-      console.log(this.auditResults);
-    }
+    this.report = this.reportService.getReport();
   }
 
 }

@@ -1,13 +1,36 @@
 <div class="container">
   <div class="page-header">
-    <div class="well">
-      <h3>Report</h3>
-    </div>
   </div>
-  <div class="panel panel-default" *ngFor="let aresult of auditResults">
-    <div class="panel-heading">{{aresult.test}} - {{aresult.result.outcome}}</div>
-    <div class="panel-body" *ngIf="aresult.result.description">
-      <p>{{aresult.result.description}}</p>
+  <div *ngFor="let principle of report.principles">
+    <h2>Principe {{principle.num}}: {{principle.handle}}</h2>
+    <p>{{principle.text}}</p>
+
+    <div *ngFor="let guideline of principle.guidelines">
+      <h3>Richtlijn {{guideline.num}}: {{guideline.handle}}</h3>
+      <p>{{guideline.text}}</p>
+
+      <div *ngFor="let criterium of guideline.successcriteria">
+        <h4>Succescriterium {{criterium.num}}: {{criterium.handle}}</h4>
+        <p>{{criterium.text}}</p>
+
+        <div class="panel panel-warning" *ngIf="criterium.result.result.outcome === 'earl:failed'">
+          <div class="panel-heading">
+            De onderzochte set webpagina's voldoet niet aan dit succescriterium.
+          </div>
+          <div class="panel-body">
+            {{criterium.result.result.description}}
+          </div>
+        </div>
+        <div class="panel panel-success" *ngIf="criterium.result.result.outcome !== 'earl:failed'">
+          <div class="panel-heading">
+            De onderzochte set webpagina's voldoet aan dit succescriterium.
+          </div>
+          <div class="panel-body">
+            -
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
