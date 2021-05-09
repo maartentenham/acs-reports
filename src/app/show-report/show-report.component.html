@@ -1,6 +1,25 @@
 <div class="container">
   <div class="page-header">
   </div>
+  <div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2>Samenvatting</h2></div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Principe</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let total of totals">
+            <td>{{total.name}}</td>
+            <td>{{total.totalSuccess}}/{{total.totalCriteria}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div *ngFor="let principle of report.principles">
     <h2>Principe {{principle.num}}: {{principle.handle}}</h2>
     <p>{{principle.text}}</p>
@@ -15,6 +34,7 @@
 
         <div class="panel panel-warning" *ngIf="criterium.result.result.outcome === 'earl:failed'">
           <div class="panel-heading">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             De onderzochte set webpagina's voldoet niet aan dit succescriterium.
           </div>
           <div class="panel-body">
@@ -23,6 +43,7 @@
         </div>
         <div class="panel panel-success" *ngIf="criterium.result.result.outcome !== 'earl:failed'">
           <div class="panel-heading">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             De onderzochte set webpagina's voldoet aan dit succescriterium.
           </div>
           <div class="panel-body">
@@ -34,3 +55,4 @@
 
   </div>
 </div>
+

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import principlesEn from '../data/wcag2-en.json';
 import principlesNl from '../data/wcag2-nl.json';
-import { Principle } from '../interfaces/principle.interface';
 import { Report } from '../interfaces/report.interface';
 import {AuditResult} from '../interfaces/auditresult.interface';
+import {Total} from '../interfaces/total.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,9 @@ export class ReportService {
 
   private rep: any;
   private auditResults: AuditResult[];
-  private finalReport: Report;
   private reportNl: Report = principlesNl;
-  private reportEn: Report = principlesEn;
   private jsonQuery = require('json-query');
+  private totals: Total[] = [];
 
   constructor() {
   }
@@ -35,14 +34,23 @@ export class ReportService {
     this.rep =  value;
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {
+      const total = {name: prn.handle,  totalSuccess: 0, totalCriteria: 0};
       prn.guidelines.forEach(gl => {
         gl.successcriteria.forEach(sc => {
           sc.result = this.auditResults.find(res => res.test === sc.id);
+          total.totalCriteria++;
+          if (sc.result.result.outcome === 'earl:passed') {
+            total.totalSuccess++;
+          }
         });
-        console.log(gl);
       });
+      this.totals.push(total);
     });
 
+  }
+
+  public getTotals(): Total[] {
+    return this.totals;
   }
 
   public getReport(): Report {
