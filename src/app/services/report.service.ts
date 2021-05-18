@@ -32,6 +32,11 @@ export class ReportService {
     });
 
     this.rep =  value;
+
+    this.reportNl.evaluator = this.rep.graph[1].name;
+    this.reportNl.website = this.rep.graph[0].evaluationScope.website.siteName;
+    this.reportNl.publicationDate = new Date().toDateString();
+
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {
       const total = {name: prn.handle,  totalSuccess: 0, totalCriteria: 0};
