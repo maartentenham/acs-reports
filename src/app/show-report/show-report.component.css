@@ -1,0 +1,6 @@
+@media print{
+    .bottom-page{
+        position:fixed;
+        bottom:0;
+    }
+}
