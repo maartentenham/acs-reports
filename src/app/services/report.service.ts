@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import principlesEn from '../data/wcag2-en.json';
 import principlesNl from '../data/wcag2-nl.json';
-import { Report } from '../interfaces/report.interface';
+import {Report} from '../interfaces/report.interface';
 import {AuditResult} from '../interfaces/auditresult.interface';
-import {Total} from '../interfaces/total.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +13,12 @@ export class ReportService {
   private auditResults: AuditResult[];
   private reportNl: Report = principlesNl;
   private jsonQuery = require('json-query');
-  private totals: Total[] = [];
 
   constructor() {
   }
 
   public setResultReport(value: any): void {
+    this.reportNl.totals = [];
     this.reportNl.principles.forEach( prn => {
       prn.guidelines.forEach(gl => {
         gl.alt_id = [gl.id.split(':')[1]];
@@ -49,16 +48,15 @@ export class ReportService {
           }
         });
       });
-      this.totals.push(total);
+      this.reportNl.totals.push(total);
     });
-
-  }
-
-  public getTotals(): Total[] {
-    return this.totals;
+    sessionStorage.setItem('acsreport', JSON.stringify(this.reportNl));
   }
 
   public getReport(): Report {
+    if (sessionStorage.getItem('acsreport')) {
+        this.reportNl = JSON.parse(sessionStorage.getItem('acsreport'));
+    }
     return this.reportNl;
   }
 

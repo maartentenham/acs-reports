@@ -26,6 +26,5 @@ export class UploadJsonComponent implements OnInit {
       this.router.navigate(['show']);
     };
     fileReader.readAsText(file);
-    // this.router.navigate(['show']);
   }
 }

@@ -1,4 +1,5 @@
 import { Principle } from './principle.interface';
+import {Total} from './total.interface';
 
 export interface Report {
   principles: Principle[];
@@ -6,4 +7,5 @@ export interface Report {
   website?: string;
   summary?: string;
   publicationDate?: string;
+  totals?: Total[];
 }
