@@ -20,6 +20,7 @@ export class ShowReportComponent implements OnInit {
   ngOnInit(): void {
     this.report = this.reportService.getReport();
     this.totals = this.report.totals;
+    this.openPdf();
   }
 
   openPdf(): void {

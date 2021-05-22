@@ -1,91 +1,98 @@
-<div class="container">
-  <div>
-    <button (click)="openPdf()">PDF</button>
-  </div>
-  <div>
-    <h1 class="text-center">Toegankelijkheidsrapport</h1>
-    <h1 class="text-center">WCAG 2.1</h1>
-  </div>
-  <div class="bottom-page">
-    <p><strong>Website:</strong> {{report.website}}</p>
-    <p><strong>Onderzoeker(s):</strong> {{report.evaluator}}</p>
-    <p><strong>Publicatiedatum:</strong> {{report.publicationDate}}</p>
-    <hr/>
-  </div>
-  <div style="page-break-before: always">
-    <div>
-      <h2>Onderzoeksgegevens</h2>
-      <h4>Algemeen</h4>
-      <p>Type rapport: </p>
-      <p>Opdrachtgever: </p>
-      <p>Onderzoeksperiode: </p>
-    </div>
-    <div>
-      <h2>Onderzoeksscores</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Niveau A</th>
-            <th scope="col">Niveau AA</th>
-            <th scope="col">Totaal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let total of totals">
-            <td>{{total.name}}</td>
-            <td></td>
-            <td></td>
-            <td>{{total.totalSuccess}}/{{total.totalCriteria}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <h2>Scope van het onderzoek</h2>
-      <p></p>
-    </div>
-    <div>
-      <h2>Methode en norm</h2>
-      <p>Dit onderzoek is uitgevoerd op basis van de <a href="https://www.w3.org/TR/WCAG-EM/">evaluatiemethode (WCAG-EM)</a></p>
-      <br/>
-      <p>De toegepaste norm is EN 301 549. Deze bevat integraal de <a href="https://www.w3.org/Translations/WCAG21-nl/">WCAG 2.1</a>. Hiervoor gelden de
-        uitzonderingen zoals beschreven in artikel 1, lid 4 van de <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/HTML/?uri=CELEX:32016L2102&qid=1481290140258&from=en#d1e592-1-1">Europese richtlijn voor de toegankelijkheid
-        van overheidswebsites en -apps</a>. Deze uitzonderingen zijn ook terug te vinden op <a href="https://www.digitoegankelijk.nl/wetgeving/specifieke-situaties">Digitoegankelijk</a>.
-      </p>
-    </div>
-  </div>
-  <div *ngFor="let principle of report.principles">
-    <h2>Principe {{principle.num}}: {{principle.handle}}</h2>
-    <p>{{principle.text}}</p>
-
-    <div *ngFor="let guideline of principle.guidelines">
-      <h3>Richtlijn {{guideline.num}}: {{guideline.handle}}</h3>
-      <p>{{guideline.text}}</p>
-
-      <div *ngFor="let criterium of guideline.successcriteria">
-        <h4>Succescriterium {{criterium.num}}: {{criterium.handle}}</h4>
-        <p>{{criterium.text}}</p>
-
-        <div class="panel panel-warning" *ngIf="criterium.result.result.outcome === 'earl:failed'">
-          <div class="panel-heading">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            De onderzochte set webpagina's voldoet niet aan dit succescriterium.
-          </div>
-          <div class="panel-body">
-            {{criterium.result.result.description}}
-          </div>
+<div class="">
+  <div class="row">
+    <div class="col-md-8">
+      <div>
+        <button (click)="openPdf()">PDF</button>
+      </div>
+      <div>
+        <h1 class="text-center">Toegankelijkheidsrapport</h1>
+        <h1 class="text-center">WCAG 2.1</h1>
+      </div>
+      <div class="bottom-page">
+        <p><strong>Website:</strong> {{report.website}}</p>
+        <p><strong>Onderzoeker(s):</strong> {{report.evaluator}}</p>
+        <p><strong>Publicatiedatum:</strong> {{report.publicationDate}}</p>
+        <hr/>
+      </div>
+      <div style="page-break-before: always">
+        <div>
+          <h2>Onderzoeksgegevens</h2>
+          <h4>Algemeen</h4>
+          <p>Type rapport: </p>
+          <p>Opdrachtgever: </p>
+          <p>Onderzoeksperiode: </p>
         </div>
-        <div class="panel panel-success" *ngIf="criterium.result.result.outcome !== 'earl:failed'">
-          <div class="panel-heading">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            De onderzochte set webpagina's voldoet aan dit succescriterium.
-          </div>
-          <div class="panel-body">
-            -
+        <div>
+          <h2>Onderzoeksscores</h2>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Niveau A</th>
+              <th scope="col">Niveau AA</th>
+              <th scope="col">Totaal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let total of totals">
+              <td>{{total.name}}</td>
+              <td></td>
+              <td></td>
+              <td>{{total.totalSuccess}}/{{total.totalCriteria}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2>Scope van het onderzoek</h2>
+          <p></p>
+        </div>
+        <div>
+          <h2>Methode en norm</h2>
+          <p>Dit onderzoek is uitgevoerd op basis van de <a href="https://www.w3.org/TR/WCAG-EM/">evaluatiemethode (WCAG-EM)</a></p>
+          <br/>
+          <p>De toegepaste norm is EN 301 549. Deze bevat integraal de <a href="https://www.w3.org/Translations/WCAG21-nl/">WCAG 2.1</a>. Hiervoor gelden de
+            uitzonderingen zoals beschreven in artikel 1, lid 4 van de <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/HTML/?uri=CELEX:32016L2102&qid=1481290140258&from=en#d1e592-1-1">Europese richtlijn voor de toegankelijkheid
+              van overheidswebsites en -apps</a>. Deze uitzonderingen zijn ook terug te vinden op <a href="https://www.digitoegankelijk.nl/wetgeving/specifieke-situaties">Digitoegankelijk</a>.
+          </p>
+        </div>
+      </div>
+      <div *ngFor="let principle of report.principles">
+        <h2>Principe {{principle.num}}: {{principle.handle}}</h2>
+        <p>{{principle.text}}</p>
+
+        <div *ngFor="let guideline of principle.guidelines">
+          <h3>Richtlijn {{guideline.num}}: {{guideline.handle}}</h3>
+          <p>{{guideline.text}}</p>
+
+          <div *ngFor="let criterium of guideline.successcriteria">
+            <h4>Succescriterium {{criterium.num}}: {{criterium.handle}}</h4>
+            <p>{{criterium.text}}</p>
+
+            <div class="panel panel-warning" *ngIf="criterium.result.result.outcome === 'earl:failed'">
+              <div class="panel-heading">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                De onderzochte set webpagina's voldoet niet aan dit succescriterium.
+              </div>
+              <div class="panel-body">
+                {{criterium.result.result.description}}
+              </div>
+            </div>
+            <div class="panel panel-success" *ngIf="criterium.result.result.outcome !== 'earl:failed'">
+              <div class="panel-heading">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                De onderzochte set webpagina's voldoet aan dit succescriterium.
+              </div>
+              <div class="panel-body">
+                -
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-md-4" id="pdfIframe">
+
     </div>
 
   </div>
