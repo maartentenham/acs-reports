@@ -7,7 +7,8 @@ export class StylesTemplate {
             },
             h4: {
                 fontsize: 14,
-                bold: true
+                bold: true,
+                margin: [0, 10, 0, 0]
             },
             link: {
                 decoration: 'underline',

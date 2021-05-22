@@ -36,6 +36,7 @@ export class PdfdocumentService {
     public getDocumentDefinition(): any {
         this.report = JSON.parse(sessionStorage.getItem('acsreport'));
         const documentDefinition = {
+            footer: this.footer(),
             content: [
                 this.titlePage(),
                 this.tableOfContents(),
@@ -52,6 +53,11 @@ export class PdfdocumentService {
         return new StylesTemplate().render();
     }
 
+    private footer(): any {
+        return (currentPage, pageCount) => {
+            return currentPage > 1 ? {text: currentPage, alignment: 'center'} : '';
+        };
+    }
     private titlePage(): any {
         return new TitleTemplate({
             website : this.report.website,
