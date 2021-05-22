@@ -2,11 +2,12 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {Injectable} from '@angular/core';
 import {Report} from '../interfaces/report.interface';
-import {PrefaceTemplate} from "../pdftemplates/preface-template";
-import {SummaryTemplate} from "../pdftemplates/summary-template";
-import {TitleTemplate} from "../pdftemplates/title-template";
-import {TocTemplate} from "../pdftemplates/toc-template";
-import {StylesTemplate} from "../pdftemplates/styles-template";
+import {PrefaceTemplate} from '../pdftemplates/preface-template';
+import {SummaryTemplate} from '../pdftemplates/summary-template';
+import {TitleTemplate} from '../pdftemplates/title-template';
+import {TocTemplate} from '../pdftemplates/toc-template';
+import {StylesTemplate} from '../pdftemplates/styles-template';
+import {ResearchinfoTemplate} from "../pdftemplates/researchinfo-template";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -39,6 +40,7 @@ export class PdfdocumentService {
                 this.titlePage(),
                 this.tableOfContents(),
                 this.prefacePage(),
+                this.researchinfoPage(),
                 this.summaryPage()
             ],
             styles: this.styles()
@@ -64,6 +66,10 @@ export class PdfdocumentService {
 
     private prefacePage(): any {
         return new PrefaceTemplate().render();
+    }
+
+    private  researchinfoPage(): any {
+        return new ResearchinfoTemplate({totals: this.report.totals}).render();
     }
 
     private summaryPage(): any {
