@@ -45,7 +45,7 @@ export class ReportService {
           sc.result = this.auditResults.find(res => res.test === sc.id);
           total.totalCriteria++;
           if (sc.result.result.outcome === 'earl:passed') {
-            total.totalSuccess++;
+              total.totalSuccess++;
           }
         });
       });
