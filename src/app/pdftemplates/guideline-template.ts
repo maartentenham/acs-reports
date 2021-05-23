@@ -1,4 +1,4 @@
-import {SuccescriteriumTemplate} from "./succescriterium-template";
+import {SuccescriteriumTemplate} from './succescriterium-template';
 
 export class GuidelineTemplate {
     private model: any;
