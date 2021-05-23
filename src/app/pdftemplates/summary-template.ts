@@ -10,8 +10,8 @@ export class SummaryTemplate {
             style: 'h2',
             tocItem: true,
             pageBreak: 'before'
-        },
-            this.model.summary
+            },
+            {text: this.model.summary}
         ];
     }
 }

@@ -8,6 +8,7 @@ import {TitleTemplate} from '../pdftemplates/title-template';
 import {TocTemplate} from '../pdftemplates/toc-template';
 import {StylesTemplate} from '../pdftemplates/styles-template';
 import {ResearchinfoTemplate} from "../pdftemplates/researchinfo-template";
+import {AuditresultsTemplate} from "../pdftemplates/auditresults-template";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -42,7 +43,8 @@ export class PdfdocumentService {
                 this.tableOfContents(),
                 this.prefacePage(),
                 this.researchinfoPage(),
-                this.summaryPage()
+                this.summaryPage(),
+                this.auditresultsPage()
             ],
             styles: this.styles()
         };
@@ -80,5 +82,9 @@ export class PdfdocumentService {
 
     private summaryPage(): any {
         return new SummaryTemplate({summary: this.report.summary}).render();
+    }
+
+    private auditresultsPage(): any {
+        return new AuditresultsTemplate({principles: this.report.principles}).render();
     }
 }

@@ -1,4 +1,4 @@
-import { Guideline } from "./guideline.interface";
+import { Guideline } from './guideline.interface';
 
 export interface Principle {
   id: string;
