@@ -8,7 +8,7 @@ export class SuccescriteriumTemplate {
 
     render(): any {
         return [{
-            text: 'Successcriterium ' + this.model.criterium.num + ': ' + this.model.criterium.handle,
+            text: 'Successcriterium ' + this.model.criterium.num + ': ' + this.model.criterium.handle + '(' + this.model.criterium.level + ')',
             style: 'h6'},
             this.model.criterium.text,
             new ResultTemplate({result: this.model.criterium.result}).render()

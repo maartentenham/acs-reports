@@ -89,7 +89,8 @@ export class PdfdocumentService {
                 reliedUponTechnology: this.report.reliedUponTechnology,
                 specifics: this.report.specifics,
                 initiator: this.report.initiator,
-                researchPeriod: this.report.researchPeriod
+                researchPeriod: this.report.researchPeriod,
+                scope: this.report.scope
             })
             .render();
     }

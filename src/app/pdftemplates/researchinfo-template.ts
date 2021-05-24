@@ -18,7 +18,7 @@ export class ResearchinfoTemplate {
             'Onderzoeksperiode: ' + this.model.researchPeriod,
             new TotalsTemplate(this.model).render(),
             { text: 'Scope van het onderzoek', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
-            'TODO scope uit model',
+            this.model.scope,
             { text: 'Methode en norm', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             { text: [
                     'Dit onderzoek is uitgevoerd op basis van de ',

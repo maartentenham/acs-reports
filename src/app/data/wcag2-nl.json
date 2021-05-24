@@ -894,6 +894,13 @@
                                     "text": "dit succescriterium is primair voor webauteurs die hun eigen componenten van de gebruikersinterface ontwikkelen of scripten. Standaard bedieningselementen in HTML bijvoorbeeld voldoen al aan dit succescriterium als ze gebruikt worden volgens specificatie."
                                 }
                             ]
+                        },
+                        {
+                            "id": "WCAG2:status-messages",
+                            "num": "4.1.3",
+                            "level": "AA",
+                            "handle": "Status Messages",
+                            "text": "In content implemented using markup languages, status messages can be programmatically determined through role or properties such that they can be presented to the user by assistive technologies without receiving focus."
                         }
                     ]
                 }

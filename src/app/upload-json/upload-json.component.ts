@@ -38,6 +38,11 @@ export class UploadJsonComponent {
     this.openPdf();
   }
 
+  public onScopeChange(event: any): void {
+    this.reportService.getReport().scope = event.target.value;
+    this.openPdf();
+  }
+
   openPdf(): void {
     this.pdfdocumentService.openPdf();
   }

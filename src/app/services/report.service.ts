@@ -41,25 +41,24 @@ export class ReportService {
     this.reportNl.specifics = this.rep.graph[0].specifics.split('\n');
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {
-      const total = {name: prn.handle,  totalSuccess: 0, totalCriteria: 0};
+      const total = {name: prn.handle,  levelASuccess: 0, levelATotal: 0, levelAASuccess: 0, levelAATotal: 0, totalSuccess: 0, totalCriteria: 0};
       prn.guidelines.forEach(gl => {
         gl.successcriteria.forEach(sc => {
           sc.result = this.auditResults.find(res => res.test === sc.id);
-          total.totalCriteria++;
-          if (sc.result.result.outcome === 'earl:passed') {
+          if (sc.result.result.outcome !== 'earl:untested') {
+            total.totalCriteria++;
+            if (sc.level === 'A') total.levelATotal++;
+            if (sc.result.result.outcome === 'earl:passed') {
               total.totalSuccess++;
+            }
           }
         });
       });
       this.reportNl.totals.push(total);
     });
-    // sessionStorage.setItem('acsreport', JSON.stringify(this.reportNl));
   }
 
   public getReport(): Report {
-    // if (sessionStorage.getItem('acsreport')) {
-    //     this.reportNl = JSON.parse(sessionStorage.getItem('acsreport'));
-    // }
     return this.reportNl;
   }
 

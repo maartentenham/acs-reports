@@ -9,6 +9,7 @@ export interface Report {
   publicationDate?: string;
   initiator?: string;
   researchPeriod?: string;
+  scope?: string;
   totals?: Total[];
   samples?: [];
   reliedUponTechnology?: [];

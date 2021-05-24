@@ -14,6 +14,10 @@
           <label for="periode">Onderzoeksperiode</label>
           <input type="text" id="periode" (change)="onResearchPeriodChange($event)" class="form-control">
         </div>
+        <div clas="form-group">
+          <label for="scope">Scope van het onderzoek</label>
+          <textarea id="scope" rows="5" (change)="onScopeChange($event)" class="form-control"></textarea>
+        </div>
       </div>
     </div>
     <div class="col-md-6" id="pdfIframe">
