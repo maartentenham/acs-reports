@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ReportService} from '../services/report.service';
 import {Router} from '@angular/router';
-import {PdfdocumentService} from "../services/pdfdocument.service";
-import {Report} from '../interfaces/report.interface';
+import {PdfdocumentService} from '../services/pdfdocument.service';
+import {Report} from '../model/report.interface';
 
 @Component({
   selector: 'app-upload-json',

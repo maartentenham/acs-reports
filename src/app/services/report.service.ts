@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import principlesEn from '../data/wcag2-en.json';
 import principlesNl from '../data/wcag2-nl.json';
-import {Report} from '../interfaces/report.interface';
-import {AuditResult} from '../interfaces/auditresult.interface';
+import {Report} from '../model/report.interface';
+import {AuditResult} from '../model/auditresult.interface';
+import {Total} from '../model/total';
 
 @Injectable({
   providedIn: 'root'
@@ -41,17 +42,11 @@ export class ReportService {
     this.reportNl.specifics = this.rep.graph[0].specifics.split('\n');
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {
-      const total = {name: prn.handle,  levelASuccess: 0, levelATotal: 0, levelAASuccess: 0, levelAATotal: 0, totalSuccess: 0, totalCriteria: 0};
+      const total = new Total(prn.handle);
       prn.guidelines.forEach(gl => {
         gl.successcriteria.forEach(sc => {
           sc.result = this.auditResults.find(res => res.test === sc.id);
-          if (sc.result.result.outcome !== 'earl:untested') {
-            total.totalCriteria++;
-            if (sc.level === 'A') total.levelATotal++;
-            if (sc.result.result.outcome === 'earl:passed') {
-              total.totalSuccess++;
-            }
-          }
+          this.updateTotals(sc, total);
         });
       });
       this.reportNl.totals.push(total);
@@ -71,4 +66,26 @@ export class ReportService {
     const query = 'principles.guidelines.successcriteria[alt_id=' + altId + '].id';
     return this.jsonQuery(query, {data: principlesEn}).value;
   }
+
+  private updateTotals(sc, total: Total): void {
+    if (sc.result.result.outcome !== 'earl:untested') {
+      total.totalCriteria++;
+      if (sc.level === 'A') {
+        total.levelATotal++;
+      }
+      if (sc.level === 'AA') {
+        total.levelAATotal++;
+      }
+      if (sc.result.result.outcome === 'earl:passed') {
+        if (sc.level === 'A') {
+          total.levelASuccess++;
+        }
+        if (sc.level === 'AA') {
+          total.levelAASuccess++;
+        }
+        total.totalSuccess++;
+      }
+    }
+  }
+
 }

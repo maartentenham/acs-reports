@@ -900,7 +900,7 @@
                             "num": "4.1.3",
                             "level": "AA",
                             "handle": "Status Messages",
-                            "text": "In content implemented using markup languages, status messages can be programmatically determined through role or properties such that they can be presented to the user by assistive technologies without receiving focus."
+                            "text": "In content die is geïmplementeerd met opmaaktalen kunnen statusberichten door software bepaald worden met behulp van rol (role) of eigenschappen (properties), zodat hulptechnologieën de berichten aan de gebruiker kunnen presenteren zonder dat ze de focus krijgen."
                         }
                     ]
                 }

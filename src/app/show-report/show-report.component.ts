@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ReportService} from '../services/report.service';
 import {Router} from '@angular/router';
-import {Report} from '../interfaces/report.interface';
-import {Total} from '../interfaces/total.interface';
-import {PdfdocumentService} from "../services/pdfdocument.service";
+import {Report} from '../model/report.interface';
+import {Total} from '../model/total';
+import {PdfdocumentService} from '../services/pdfdocument.service';
 
 @Component({
   selector: 'app-show-report',

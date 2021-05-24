@@ -1,7 +1,7 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {Injectable} from '@angular/core';
-import {Report} from '../interfaces/report.interface';
+import {Report} from '../model/report.interface';
 import {PrefaceTemplate} from '../pdftemplates/preface-template';
 import {SummaryTemplate} from '../pdftemplates/summary-template';
 import {TitleTemplate} from '../pdftemplates/title-template';
@@ -10,7 +10,7 @@ import {StylesTemplate} from '../pdftemplates/styles-template';
 import {ResearchinfoTemplate} from '../pdftemplates/researchinfo-template';
 import {AuditresultsTemplate} from '../pdftemplates/auditresults-template';
 import {TestesPagesTemplate} from '../pdftemplates/testes-pages-template';
-import {ReportService} from "./report.service";
+import {ReportService} from './report.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 

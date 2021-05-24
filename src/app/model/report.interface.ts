@@ -1,5 +1,5 @@
 import { Principle } from './principle.interface';
-import {Total} from './total.interface';
+import {Total} from './total';
 
 export interface Report {
   principles: Principle[];
