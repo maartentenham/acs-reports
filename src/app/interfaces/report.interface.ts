@@ -7,6 +7,10 @@ export interface Report {
   website?: string;
   summary?: string;
   publicationDate?: string;
+  initiator?: string;
+  researchPeriod?: string;
   totals?: Total[];
-  structuredSample?: any;
+  samples?: [];
+  reliedUponTechnology?: [];
+  specifics?: [];
 }

@@ -1,4 +1,4 @@
-import {TotalsTemplate} from "./totals-template";
+import {TotalsTemplate} from './totals-template';
 
 export class ResearchinfoTemplate {
     private model: any;
@@ -8,12 +8,14 @@ export class ResearchinfoTemplate {
     }
 
     render(): any {
+        const technologies = [];
+        this.model.reliedUponTechnology.forEach(t => technologies.push(t.title));
         return [
             { text: 'Onderzoeksgegevens', style: 'h2', tocItem: true, pageBreak: 'before'},
             { text: 'Algemeen', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             'Type rapport: WCAG 2.1 niveau AA',
-            'Opdrachtgever: TODO',
-            'Onderzoeksperiode: TODO',
+            'Opdrachtgever: ' + this.model.initiator,
+            'Onderzoeksperiode: ' + this.model.researchPeriod,
             new TotalsTemplate(this.model).render(),
             { text: 'Scope van het onderzoek', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             'TODO scope uit model',
@@ -37,11 +39,12 @@ export class ResearchinfoTemplate {
             { text: 'Basisniveau van toegankelijkheidsondersteuning', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             'Gangbare webbrowsers en hulpapparatuur.',
             { text: 'Technologieën waarop wordt gesteund', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
-            'TODO',
+            { ul: technologies, margin: [10, 0, 0, 0] },
             { text: 'User agents (webbrowsers)', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
-            'TODO',
+            'Bij dit onderzoek is gebruik gemaakt van de volgende webbrowsers:',
+            { ul: this.model.specifics, margin: [10, 0, 0, 0] },
             { text: 'Aantal pagina\'s van de steekproef', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
-            'TODO'
+            this.model.samples.length + ' (zie bijlage voor de volledige steekproef)'
       ];
     }
 }

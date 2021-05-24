@@ -10,6 +10,7 @@ import {StylesTemplate} from '../pdftemplates/styles-template';
 import {ResearchinfoTemplate} from '../pdftemplates/researchinfo-template';
 import {AuditresultsTemplate} from '../pdftemplates/auditresults-template';
 import {TestesPagesTemplate} from '../pdftemplates/testes-pages-template';
+import {ReportService} from "./report.service";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -19,7 +20,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class PdfdocumentService {
     private report: Report;
 
-    constructor() {
+    constructor(private reportService: ReportService) {
     }
 
     public openPdf(): void {
@@ -27,6 +28,9 @@ export class PdfdocumentService {
         const pdfDocGenerator = pdfMake.createPdf(this.getDocumentDefinition());
         pdfDocGenerator.getDataUrl((dataUrl) => {
             const targetElement = document.querySelector('#pdfIframe');
+            if (targetElement.hasChildNodes()) {
+                targetElement.removeChild(targetElement.firstChild);
+            }
             const iframe = document.createElement('iframe');
             iframe.src = dataUrl;
             iframe.width = '100%';
@@ -36,7 +40,7 @@ export class PdfdocumentService {
     }
 
     public getDocumentDefinition(): any {
-        this.report = JSON.parse(sessionStorage.getItem('acsreport'));
+        this.report = this.reportService.getReport();
         const documentDefinition = {
             footer: this.footer(),
             content: [
@@ -79,7 +83,15 @@ export class PdfdocumentService {
     }
 
     private  researchinfoPage(): any {
-        return new ResearchinfoTemplate({totals: this.report.totals}).render();
+        return new ResearchinfoTemplate({
+                totals: this.report.totals,
+                samples: this.report.samples,
+                reliedUponTechnology: this.report.reliedUponTechnology,
+                specifics: this.report.specifics,
+                initiator: this.report.initiator,
+                researchPeriod: this.report.researchPeriod
+            })
+            .render();
     }
 
     private summaryPage(): any {
@@ -91,6 +103,6 @@ export class PdfdocumentService {
     }
 
     private testedUrlsPage(): any {
-        return new TestesPagesTemplate({structuredSample: this.report.structuredSample}).render();
+        return new TestesPagesTemplate({samples: this.report.samples}).render();
     }
 }

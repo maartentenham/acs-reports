@@ -1,12 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <div class="well well-lg">
-        <h4>Upload JSON</h4>
-        <input id="upload" type="file" (change)="onChange($event)" class="file">
+    <div class="col-md-6">
+      <div class="form" style="margin-top: 50px">
+        <div class="form-group">
+          <label for="upload">Upload JSON</label>
+          <input id="upload" type="file" (change)="onFileChange($event)" class="file">
+        </div>
+        <div class="form-group">
+          <label for="opdrachtgever">Opdrachtgever</label>
+          <input type="text" id="opdrachtgever" (change)="onInitiatorChange($event)" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="periode">Onderzoeksperiode</label>
+          <input type="text" id="periode" (change)="onResearchPeriodChange($event)" class="form-control">
+        </div>
       </div>
     </div>
-    <div class="col-md-8" id="pdfIframe">
+    <div class="col-md-6" id="pdfIframe">
     </div>
   </div>
 </div>

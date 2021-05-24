@@ -36,8 +36,9 @@ export class ReportService {
     this.reportNl.website = this.rep.graph[0].evaluationScope.website.siteName;
     this.reportNl.publicationDate = new Date().toDateString();
     this.reportNl.summary =  this.rep.graph[0].summary;
-    this.reportNl.structuredSample = this.rep.graph[0].structuredSample;
-
+    this.reportNl.samples = this.rep.graph[0].structuredSample.webpage.concat(this.rep.graph[0].randomSample.webpage);
+    this.reportNl.reliedUponTechnology = this.rep.graph[0].reliedUponTechnology;
+    this.reportNl.specifics = this.rep.graph[0].specifics.split('\n');
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {
       const total = {name: prn.handle,  totalSuccess: 0, totalCriteria: 0};
@@ -52,13 +53,13 @@ export class ReportService {
       });
       this.reportNl.totals.push(total);
     });
-    sessionStorage.setItem('acsreport', JSON.stringify(this.reportNl));
+    // sessionStorage.setItem('acsreport', JSON.stringify(this.reportNl));
   }
 
   public getReport(): Report {
-    if (sessionStorage.getItem('acsreport')) {
-        this.reportNl = JSON.parse(sessionStorage.getItem('acsreport'));
-    }
+    // if (sessionStorage.getItem('acsreport')) {
+    //     this.reportNl = JSON.parse(sessionStorage.getItem('acsreport'));
+    // }
     return this.reportNl;
   }
 
