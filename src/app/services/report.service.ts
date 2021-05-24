@@ -36,6 +36,7 @@ export class ReportService {
     this.reportNl.website = this.rep.graph[0].evaluationScope.website.siteName;
     this.reportNl.publicationDate = new Date().toDateString();
     this.reportNl.summary =  this.rep.graph[0].summary;
+    this.reportNl.structuredSample = this.rep.graph[0].structuredSample;
 
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {

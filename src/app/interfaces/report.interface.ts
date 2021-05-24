@@ -8,4 +8,5 @@ export interface Report {
   summary?: string;
   publicationDate?: string;
   totals?: Total[];
+  structuredSample?: any;
 }
