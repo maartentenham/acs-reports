@@ -39,7 +39,7 @@ export class ReportService {
     this.reportNl.summary =  this.rep.graph[0].summary;
     this.reportNl.samples = this.rep.graph[0].structuredSample.webpage.concat(this.rep.graph[0].randomSample.webpage);
     this.reportNl.reliedUponTechnology = this.rep.graph[0].reliedUponTechnology;
-    this.reportNl.specifics = this.rep.graph[0].specifics.split('\n');
+    if (this.reportNl.specifics) { this.reportNl.specifics = this.rep.graph[0].specifics.split('\n'); }
     this.auditResults = this.rep.graph[0].auditResult;
     this.reportNl.principles.forEach( prn => {
       const total = new Total(prn.handle);

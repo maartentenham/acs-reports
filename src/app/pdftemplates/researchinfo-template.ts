@@ -39,10 +39,10 @@ export class ResearchinfoTemplate {
             { text: 'Basisniveau van toegankelijkheidsondersteuning', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             'Gangbare webbrowsers en hulpapparatuur.',
             { text: 'Technologieën waarop wordt gesteund', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
-            { ul: technologies, margin: [10, 0, 0, 0] },
+            technologies.length >  0 ? { ul: technologies, margin: [10, 0, 0, 0] } : '',
             { text: 'User agents (webbrowsers)', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             'Bij dit onderzoek is gebruik gemaakt van de volgende webbrowsers:',
-            { ul: this.model.specifics, margin: [10, 0, 0, 0] },
+            this.model.specifics ? { ul: this.model.specifics, margin: [10, 0, 0, 0] } : '',
             { text: 'Aantal pagina\'s van de steekproef', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             this.model.samples.length + ' (zie bijlage voor de volledige steekproef)'
       ];
