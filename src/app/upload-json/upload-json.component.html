@@ -1,11 +1,12 @@
 <div class="container">
-  <div class="page-header">
-    <div class="well">
-      <h3>Upload JSON</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="well well-lg">
+        <h4>Upload JSON</h4>
+        <input id="upload" type="file" (change)="onChange($event)" class="file">
+      </div>
+    </div>
+    <div class="col-md-8" id="pdfIframe">
     </div>
   </div>
-
-    <div class="well well-lg">
-      <input id="upload" type="file" (change)="onChange($event)" class="">
-    </div>
 </div>

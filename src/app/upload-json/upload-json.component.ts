@@ -1,19 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ReportService} from '../services/report.service';
 import {Router} from '@angular/router';
+import {PdfdocumentService} from "../services/pdfdocument.service";
+import {Report} from "../interfaces/report.interface";
 
 @Component({
   selector: 'app-upload-json',
   templateUrl: './upload-json.component.html',
   styleUrls: ['./upload-json.component.css']
 })
-export class UploadJsonComponent implements OnInit {
+export class UploadJsonComponent implements AfterViewInit {
 
+  report: Report;
   fileContent = '';
 
-  constructor(private reportService: ReportService, private router: Router) { }
+  constructor(private reportService: ReportService, private pdfdocumentService: PdfdocumentService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.report =  this.reportService.getReport();
+    if (this.report) {
+      this.openPdf();
+    }
   }
 
   public onChange(event: any): void {
@@ -23,8 +30,13 @@ export class UploadJsonComponent implements OnInit {
       this.fileContent = fileReader.result.toString();
       this.fileContent = this.fileContent.replace(/@/gi, '');
       this.reportService.setResultReport(JSON.parse(this.fileContent));
-      this.router.navigate(['show']);
+      this.openPdf();
+      // this.router.navigate(['show']);
     };
     fileReader.readAsText(file);
+  }
+
+  openPdf(): void {
+    this.pdfdocumentService.openPdf();
   }
 }
