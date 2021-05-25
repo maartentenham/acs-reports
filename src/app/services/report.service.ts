@@ -4,6 +4,7 @@ import principlesNl from '../data/wcag2-nl.json';
 import {Report} from '../model/report.interface';
 import {AuditResult} from '../model/auditresult.interface';
 import {Total} from '../model/total';
+import moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class ReportService {
 
     this.reportNl.evaluator = this.rep.graph[1].name;
     this.reportNl.website = this.rep.graph[0].evaluationScope.website.siteName;
-    this.reportNl.publicationDate = new Date().toDateString();
+    this.reportNl.publicationDate = moment().format('DD-MM-YYYY');
     this.reportNl.summary =  this.rep.graph[0].summary;
     this.reportNl.samples = this.rep.graph[0].structuredSample.webpage.concat(this.rep.graph[0].randomSample.webpage);
     this.reportNl.reliedUponTechnology = this.rep.graph[0].reliedUponTechnology;
