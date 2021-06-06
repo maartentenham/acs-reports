@@ -6,7 +6,7 @@ export class SummaryTemplate {
     }
     render(): any {
         return [{
-            text: 'Samenvatting',
+            text: 'Samenvatting ',
             style: 'h2',
             tocItem: true,
             pageBreak: 'before'

@@ -8,7 +8,7 @@ export class PrincipleTemplate {
 
     render(): any {
         const principle = [{
-            text: 'Principe ' + this.model.principle.num + ': ' + this.model.principle.handle,
+            text: 'Principe ' + this.model.principle.num + ': ' + this.model.principle.handle + ' ',
             style: 'h2',
             tocItem: true,
             pageBreak: this.model.principle.num === '1' ? 'before' : '',

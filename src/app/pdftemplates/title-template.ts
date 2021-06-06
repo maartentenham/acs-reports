@@ -7,8 +7,8 @@ export class TitleTemplate {
     render(): any {
         return [{
             stack: [
-                'Toegankelijkheidsrapport',
-                'WCAG 2.1'
+                {text: 'Toegankelijkheidsrapport ', tag: 'H1'},
+                'WCAG 2.1 '
             ],
             bold: true,
             fontSize: 24,
@@ -19,7 +19,7 @@ export class TitleTemplate {
             stack: [
                 'Website: ' + this.model.website,
                 'Onderzoeker(s): ' + this.model.evaluator,
-                'Publicatiedatum: ' + this.model.publicationDate
+                'Publicatiedatum: ' + this.model.publicationDate + ' '
             ],
             absolutePosition: {x: 40, y: 700},
             pageBreak: 'after',

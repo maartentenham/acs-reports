@@ -2,7 +2,7 @@ export class TocTemplate {
     render(): any  {
         return {
             toc: {
-                title: {text: 'Inhoudsopgave', style: 'h4'}
+                title: {text: 'Inhoudsopgave ', style: 'h2'}
             }
         };
     }

@@ -1,7 +1,7 @@
 export class PrefaceTemplate {
     render(): any  {
         return [{
-            text: 'Inleiding',
+            text: 'Inleiding ',
             style: 'h2',
             tocItem: true,
             pageBreak: 'before'

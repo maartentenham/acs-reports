@@ -8,7 +8,7 @@ export class GuidelineTemplate {
 
     render(): any {
         const guideline = [{
-            text: 'Richtlijn ' + this.model.guideline.num + ': ' + this.model.guideline.handle,
+            text: 'Richtlijn ' + this.model.guideline.num + ': ' + this.model.guideline.handle + ' ',
             style: 'h4',
             tocItem: true,
             tocMargin: [20, 0,  0,  0]},
