@@ -23,6 +23,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class PdfdocumentService {
     private report: Report;
     private doc: PDFKit.PDFDocument;
+    private struct: any;
 
     constructor(private reportService: ReportService) {
     }
@@ -54,14 +55,10 @@ export class PdfdocumentService {
         this.doc.info.Title = 'WCAG 1.2 report';
         this.doc.info.Author = this.report.evaluator;
 
-        const struct = this.doc.struct('Document');
-        this.doc.addStructure(struct);
+        this.struct = this.doc.struct('Document');
+        this.doc.addStructure(this.struct);
 
-        struct.add(this.doc.struct('P', () => {
-            this.doc
-                .fontSize(24)
-                .text('Toegankelijkheidsrapport', 100, 100);
-        }));
+        this.titlePage();
         this.doc.end();
         stream.on('finish', () => {
             const dataUrl = stream.toBlobURL('application/pdf');
@@ -110,7 +107,7 @@ export class PdfdocumentService {
             website : this.report.website,
             evaluator : this.report.evaluator,
             publicationDate : this.report.publicationDate
-        }).render();
+        }).renderDoc(this.doc, this.struct);
     }
 
     private tableOfContents(): any {

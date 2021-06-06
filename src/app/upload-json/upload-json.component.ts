@@ -44,6 +44,6 @@ export class UploadJsonComponent {
   }
 
   openPdf(): void {
-    this.pdfdocumentService.openPdf();
+    this.pdfdocumentService.openKitPdf();
   }
 }
