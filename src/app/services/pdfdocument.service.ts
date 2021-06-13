@@ -77,6 +77,7 @@ export class PdfdocumentService {
     public getDocumentDefinition(): any {
         this.report = this.reportService.getReport();
         const documentDefinition = {
+            version: '1.5',
             info: new MetainfoTemplate().render(),
             content: [
                 this.titlePage(),
@@ -107,7 +108,7 @@ export class PdfdocumentService {
             website : this.report.website,
             evaluator : this.report.evaluator,
             publicationDate : this.report.publicationDate
-        }).renderDoc(this.doc, this.struct);
+        }).render();
     }
 
     private tableOfContents(): any {
