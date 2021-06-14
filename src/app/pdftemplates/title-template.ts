@@ -4,16 +4,18 @@ export class TitleTemplate {
     constructor(model: any) {
         this.model = model;
     }
+
     render(): any {
         return [{
             stack: [
-                {text: 'Toegankelijkheidsrapport ', tag: 'H1'},
-                'WCAG 2.1 '
+                {text: 'Toegankelijkheidsrapport '},
+                {text: 'WCAG 2.1 '}
             ],
             bold: true,
             fontSize: 24,
             alignment: 'center',
-            margin: [0, 100, 0, 40]
+            margin: [0, 100, 0, 40],
+            tag: 'H'
         },
         {
             stack: [
@@ -23,7 +25,8 @@ export class TitleTemplate {
             ],
             absolutePosition: {x: 40, y: 700},
             pageBreak: 'after',
-            style: 'h4'
+            style: 'h4',
+            tag: 'H4'
         }];
 
     }

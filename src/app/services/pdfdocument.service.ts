@@ -23,6 +23,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class PdfdocumentService {
     private report: Report;
     private doc: PDFKit.PDFDocument;
+    private struct: any;
 
     constructor(private reportService: ReportService) {
     }
@@ -42,44 +43,10 @@ export class PdfdocumentService {
         });
     }
 
-    public openKitPdf(): void {
-        this.report = this.reportService.getReport();
-        this.doc = new PDFKit({
-            pdfVersion: '1.5',
-            lang: 'nl',
-            tagged: true,
-            displayTitle: true
-        });
-        const stream  = this.doc.pipe(BlobStream());
-        this.doc.info.Title = 'WCAG 1.2 report';
-        this.doc.info.Author = this.report.evaluator;
-
-        const struct = this.doc.struct('Document');
-        this.doc.addStructure(struct);
-
-        struct.add(this.doc.struct('P', () => {
-            this.doc
-                .fontSize(24)
-                .text('Toegankelijkheidsrapport', 100, 100);
-        }));
-        this.doc.end();
-        stream.on('finish', () => {
-            const dataUrl = stream.toBlobURL('application/pdf');
-            const targetElement = document.querySelector('#pdfIframe');
-            if (targetElement.hasChildNodes()) {
-                targetElement.removeChild(targetElement.firstChild);
-            }
-            const iframe = document.createElement('iframe');
-            iframe.src = dataUrl;
-            iframe.width = '100%';
-            iframe.height = '900';
-            targetElement.appendChild(iframe);
-        });
-    }
-
     public getDocumentDefinition(): any {
         this.report = this.reportService.getReport();
         const documentDefinition = {
+            version: '1.5',
             info: new MetainfoTemplate().render(),
             content: [
                 this.titlePage(),

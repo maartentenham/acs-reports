@@ -55,6 +55,9 @@ export class ReportService {
   }
 
   public getReport(): Report {
+    if (this.reportNl.onlyIssues) {
+      this.filterIssues();
+    }
     return this.reportNl;
   }
 
@@ -89,4 +92,13 @@ export class ReportService {
     }
   }
 
+  public filterIssues(): void {
+    this.reportNl.principles.forEach(p => {
+      p.guidelines.forEach(g => {
+        g.successcriteria = g.successcriteria.filter(s => s.result.result.outcome === 'earl:failed');
+      });
+      p.guidelines = p.guidelines.filter(p => p.successcriteria.length > 0);
+    });
+    this.reportNl.principles = this.reportNl.principles.filter(p => p.guidelines.length > 0);
+  }
 }

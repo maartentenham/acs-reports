@@ -5,12 +5,9 @@ export class SummaryTemplate {
         this.model = model;
     }
     render(): any {
-        return [{
-            text: 'Samenvatting ',
-            style: 'h2',
-            tocItem: true,
-            pageBreak: 'before'
-            },
+        return [
+            {text: '', pageBreak: 'before'},
+            {stack: [{text: 'Samenvatting ', style: 'h2', tocItem: true}], tag: 'H2'},
             {text: this.model.summary}
         ];
     }

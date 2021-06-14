@@ -1,13 +1,11 @@
 export class PrefaceTemplate {
     render(): any  {
-        return [{
-            text: 'Inleiding ',
-            style: 'h2',
-            tocItem: true,
-            pageBreak: 'before'
-        },
-            {text: [
-                    'In dit rapport is te lezen in hoeverre de onderzochte website voldoet aan de WCAG 2.1, niveau AA. WCAG staat voor Web Content Accessibility Guidelines en is in de Europese wetgeving opgenomen als standaardvoor digitale toegankelijkheid (zie: “Methode en norm”). In Nederland is dit geïmplementeerd in het: ',
+        return [{text: '', pageBreak: 'before'},
+                {stack: [
+                    {text: 'Inleiding ',  style: 'h2', tocItem: true}
+                ], tag: 'H2'},
+                {text: [
+                    {text: '\nIn dit rapport is te lezen in hoeverre de onderzochte website voldoet aan de WCAG 2.1, niveau AA. WCAG staat voor Web Content Accessibility Guidelines en is in de Europese wetgeving opgenomen als standaardvoor digitale toegankelijkheid (zie: “Methode en norm”). In Nederland is dit geïmplementeerd in het: '},
                     {
                         text: 'Tijdelijk besluit digitale toegankelijkheid overheid',
                         link: 'https://wetten.overheid.nl/BWBR0040936/2018-07-01',

@@ -8,15 +8,19 @@
         </div>
         <div class="form-group">
           <label for="opdrachtgever">Opdrachtgever</label>
-          <input type="text" id="opdrachtgever" (change)="onInitiatorChange($event)" class="form-control">
+          <input type="text" id="opdrachtgever" (change)="onInitiatorChange($event)" class="form-control"/>
         </div>
         <div class="form-group">
           <label for="periode">Onderzoeksperiode</label>
-          <input type="text" id="periode" (change)="onResearchPeriodChange($event)" class="form-control">
+          <input type="text" id="periode" (change)="onResearchPeriodChange($event)" class="form-control"/>
         </div>
-        <div clas="form-group">
+        <div class="form-group">
           <label for="scope">Scope van het onderzoek</label>
           <textarea id="scope" rows="5" (change)="onScopeChange($event)" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="onlyIssues">Alleen issues tonen</label>
+          <input type="checkbox" id="onlyIssues" (change)="onOnlyIssuesChange($event)" class="form-control"/>
         </div>
       </div>
     </div>

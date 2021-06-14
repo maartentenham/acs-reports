@@ -7,13 +7,14 @@ export class PrincipleTemplate {
     }
 
     render(): any {
-        const principle = [{
+        const principle = [
+            {text: '', pageBreak: this.model.principle.num === '1' ? 'before' : ''},
+            {stack: [{
             text: 'Principe ' + this.model.principle.num + ': ' + this.model.principle.handle + ' ',
             style: 'h2',
             tocItem: true,
-            pageBreak: this.model.principle.num === '1' ? 'before' : '',
             margin: this.model.principle.num === '1' ? [0, 0, 0, 0] : [0, 20, 0, 0]},
-            this.model.principle.text
+            this.model.principle.text], tag: 'H2'}
         ];
 
         this.model.principle.guidelines.forEach(g => principle.push(new GuidelineTemplate({guideline: g}).render()));
