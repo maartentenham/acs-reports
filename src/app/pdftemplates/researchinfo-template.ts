@@ -11,7 +11,8 @@ export class ResearchinfoTemplate {
         const technologies = [];
         this.model.reliedUponTechnology.forEach(t => technologies.push(t.title));
         return [
-            { text: 'Onderzoeksgegevens ', style: 'h2', tocItem: true, pageBreak: 'before'},
+            { text: '', pageBreak: 'before'},
+            { stack: [{ text: 'Onderzoeksgegevens ', style: 'h2', tocItem: true}], tag: 'H2'},
             { text: 'Algemeen', style: 'h4', tocItem:  true, tocMargin: [20, 0, 0, 0]},
             'Type rapport: WCAG 2.1 niveau AA',
             'Opdrachtgever: ' + this.model.initiator,

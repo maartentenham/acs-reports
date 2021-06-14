@@ -43,6 +43,11 @@ export class UploadJsonComponent {
     this.openPdf();
   }
 
+  public onOnlyIssuesChange(event: any): void {
+    this.reportService.getReport().onlyIssues  = event.target.value;
+    this.openPdf();
+  }
+
   openPdf(): void {
     this.pdfdocumentService.openPdf();
   }
