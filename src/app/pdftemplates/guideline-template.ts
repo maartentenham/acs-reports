@@ -7,12 +7,13 @@ export class GuidelineTemplate {
     }
 
     render(): any {
-        const guideline = [{
+        const guideline = [
+            {stack: [{
             text: 'Richtlijn ' + this.model.guideline.num + ': ' + this.model.guideline.handle + ' ',
             style: 'h4',
             tocItem: true,
-            tocMargin: [20, 0,  0,  0]},
-            this.model.guideline.text
+            tocMargin: [20, 0,  0,  0]}], tag: 'P'},
+            {stack: [{text: this.model.guideline.text}], tag: 'P'}
         ];
 
         this.model.guideline.successcriteria

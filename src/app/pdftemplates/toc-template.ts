@@ -1,9 +1,13 @@
 export class TocTemplate {
     render(): any  {
         return {
-            toc: {
-                title: {stack: [{text: 'Inhoudsopgave ', style: 'h2'}], tag: 'H2'}
-            }
+            stack: [
+                {
+                    toc: {
+                        title: {text: 'Inhoudsopgave ', style: 'h2'}
+                    }
+                }
+            ], tag: 'TOC'
         };
     }
 }

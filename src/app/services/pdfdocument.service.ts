@@ -13,7 +13,6 @@ import {TestesPagesTemplate} from '../pdftemplates/testes-pages-template';
 import {ReportService} from './report.service';
 import {MetainfoTemplate} from '../pdftemplates/metainfo-template';
 import * as PDFKit from '../../assets/pdfkit.standalone';
-import * as BlobStream from '../../assets/blob-stream';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -45,7 +44,7 @@ export class PdfdocumentService {
 
     public getDocumentDefinition(): any {
         this.report = this.reportService.getReport();
-        const documentDefinition = {
+        return {
             version: '1.5',
             info: new MetainfoTemplate().render(),
             content: [
@@ -60,7 +59,6 @@ export class PdfdocumentService {
             footer: this.footer(),
             styles: this.styles()
         };
-        return documentDefinition;
     }
 
     private styles(): any {
