@@ -3,12 +3,13 @@ import {Total} from '../model/total';
 export class TotalsTemplate {
     private model: any;
     private totals = [];
+    private grandTotal: Total;
     private tableheader = ['', this.getCell('Niveau A'), this.getCell('Niveau AA'), this.getCell( 'Totaal')];
 
     constructor(model: any) {
         this.model = model;
         this.totals.push(this.tableheader);
-        const grandTotal = new Total('Totaal');
+        this.grandTotal = new Total('Totaal');
         this.model.totals.forEach((total: Total) => {
             const row  = [
                 total.name,
@@ -16,18 +17,18 @@ export class TotalsTemplate {
                 this.getCell(total.levelAASuccess + '/' + total.levelAATotal),
                 this.getCell(total.totalSuccess + '/' + total.totalCriteria)];
             this.totals.push(row);
-            grandTotal.levelASuccess = grandTotal.levelASuccess + total.levelASuccess;
-            grandTotal.levelAASuccess = grandTotal.levelAASuccess + total.levelAASuccess;
-            grandTotal.levelATotal = grandTotal.levelATotal + total.levelATotal;
-            grandTotal.levelAATotal = grandTotal.levelAATotal + total.levelAATotal;
-            grandTotal.totalSuccess = grandTotal.totalSuccess + total.totalSuccess;
-            grandTotal.totalCriteria = grandTotal.totalCriteria + total.totalCriteria;
+            this.grandTotal.levelASuccess = this.grandTotal.levelASuccess + total.levelASuccess;
+            this.grandTotal.levelAASuccess = this.grandTotal.levelAASuccess + total.levelAASuccess;
+            this.grandTotal.levelATotal = this.grandTotal.levelATotal + total.levelATotal;
+            this.grandTotal.levelAATotal = this.grandTotal.levelAATotal + total.levelAATotal;
+            this.grandTotal.totalSuccess = this.grandTotal.totalSuccess + total.totalSuccess;
+            this.grandTotal.totalCriteria = this.grandTotal.totalCriteria + total.totalCriteria;
         });
         const grandTotalRow  = [
-            grandTotal.name,
-            this.getCell(grandTotal.levelASuccess + '/' + grandTotal.levelATotal),
-            this.getCell(grandTotal.levelAASuccess + '/' + grandTotal.levelAATotal),
-            this.getCell(grandTotal.totalSuccess + '/' + grandTotal.totalCriteria)];
+            this.grandTotal.name,
+            this.getCell(this.grandTotal.levelASuccess + '/' + this.grandTotal.levelATotal),
+            this.getCell(this.grandTotal.levelAASuccess + '/' + this.grandTotal.levelAATotal),
+            this.getCell(this.grandTotal.totalSuccess + '/' + this.grandTotal.totalCriteria)];
         this.totals.push(grandTotalRow);
     }
 
@@ -38,13 +39,9 @@ export class TotalsTemplate {
             tocItem: true,
             tocMargin: [20, 0, 0, 0],
         }, {
-            table: {
-                headerRows: 1,
-                widths: [ '*', '*', '*', '*' ],
-                alignment: 'center',
-                body: this.totals
-            }
-        }];
+            text: 'Score: ' + this.grandTotal.totalSuccess + '/' + this.grandTotal.totalCriteria
+        }
+        ];
     }
 
     private getCell(celltext: string): any {

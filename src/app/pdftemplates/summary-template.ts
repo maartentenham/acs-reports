@@ -8,7 +8,7 @@ export class SummaryTemplate {
         return [
             {text: '', pageBreak: 'before'},
             {stack: [{text: 'Samenvatting ', style: 'h2', tocItem: true}], tag: 'H2'},
-            {text: this.model.summary}
+            {stack: [{text: this.model.summary}], tag: 'P'}
         ];
     }
 }

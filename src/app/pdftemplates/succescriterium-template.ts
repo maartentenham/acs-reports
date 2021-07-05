@@ -11,7 +11,7 @@ export class SuccescriteriumTemplate {
             text: 'Successcriterium ' + this.model.criterium.num + ': ' + this.model.criterium.handle +
                   ' (niveau ' + this.model.criterium.level + ') ',
             style: 'h6'},
-            this.model.criterium.text,
+            {text: this.model.criterium.text},
             new ResultTemplate({result: this.model.criterium.result}).render()
         ];
     }
