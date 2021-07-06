@@ -28,6 +28,9 @@ export class StylesTemplate {
             link: {
                 decoration: 'underline',
                 color: 'blue'
+            },
+            result: {
+                margin: [10, 0, 10, 0]
             }
         };
     }

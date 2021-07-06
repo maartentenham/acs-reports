@@ -39,7 +39,7 @@ export class TotalsTemplate {
             tocItem: true,
             tocMargin: [20, 0, 0, 0],
         }, {
-            text: 'Score: ' + this.grandTotal.totalSuccess + '/' + this.grandTotal.totalCriteria
+            text: 'Score: Op ' + this.grandTotal.totalSuccess + ' van de ' + this.grandTotal.totalCriteria + ' criteria is succesvol gescoord.'
         }
         ];
     }

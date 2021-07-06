@@ -11,7 +11,7 @@ export class TestesPagesTemplate {
         ];
 
         const testedpages = [];
-        this.model.samples.forEach(w => testedpages.push({text: w.source, style: 'link', margin: [10, 0, 0, 0]}));
+        this.model.samples.forEach(w => testedpages.push({stack: [{text: w.source, style: 'link', margin: [10, 0, 0, 0]}], tag: 'Link'}));
         const siteList = {ul: testedpages};
         return [header, siteList];
     }

@@ -11,20 +11,8 @@ export class ResultTemplate {
             result.push(resultText);
         } else {
             const resultText =  [
-                {text: 'De onderzochte set webpagina’s voldoet NIET aan dit succescriterium.', style: 'fail'},
-                {
-                    table: {
-                        headerRows: 0,
-                        body: [
-                            [{
-                                fillColor:  '#dcdcdc',
-                                border: [false, false, false, false],
-                                columns: [this.model.result.result.description]
-                            }]
-                        ]
-                    },
-                    margin: [10, 0, 10, 0],
-                }
+                {stack: [{text: 'De onderzochte set webpagina’s voldoet NIET aan dit succescriterium.', style: 'fail'}], tag: 'P'},
+                {stack: [{text: this.model.result.result.description, style: 'result'}], tag: 'P'}
             ];
             result.push(resultText);
         }

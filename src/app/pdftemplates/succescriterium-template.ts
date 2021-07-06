@@ -7,11 +7,11 @@ export class SuccescriteriumTemplate {
     }
 
     render(): any {
-        return [{
+        return [{stack: [{
             text: 'Successcriterium ' + this.model.criterium.num + ': ' + this.model.criterium.handle +
                   ' (niveau ' + this.model.criterium.level + ') ',
-            style: 'h6'},
-            {text: this.model.criterium.text},
+            style: 'h6'}], tag: 'P'},
+            {stack: [{text: this.model.criterium.text}], tag: 'P'},
             new ResultTemplate({result: this.model.criterium.result}).render()
         ];
     }
