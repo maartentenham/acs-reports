@@ -293,7 +293,7 @@
                         },
                         {
                             "id": "WCAG2:orientation",
-                            "alt_id": [],
+                            "alt_id": ["orientation"],
                             "num": "1.3.4",
                             "versions": [
                                 "2.1"
@@ -304,7 +304,7 @@
                         },
                         {
                             "id": "WCAG2:identify-input-purpose",
-                            "alt_id": [],
+                            "alt_id": ["identify-input-purpose"],
                             "num": "1.3.5",
                             "versions": [
                                 "2.1"
@@ -605,7 +605,7 @@
                         },
                         {
                             "id": "WCAG2:reflow",
-                            "alt_id": [],
+                            "alt_id": ["reflow"],
                             "num": "1.4.10",
                             "versions": [
                                 "2.1"
@@ -633,7 +633,7 @@
                         },
                         {
                             "id": "WCAG2:non-text-contrast",
-                            "alt_id": [],
+                            "alt_id": ["non-text-contrast"],
                             "num": "1.4.11",
                             "versions": [
                                 "2.1"
@@ -659,7 +659,7 @@
                         },
                         {
                             "id": "WCAG2:text-spacing",
-                            "alt_id": [],
+                            "alt_id": ["text-spacing"],
                             "num": "1.4.12",
                             "versions": [
                                 "2.1"
@@ -689,7 +689,7 @@
                         },
                         {
                             "id": "WCAG2:content-on-hover-or-focus",
-                            "alt_id": [],
+                            "alt_id": ["content-on-hover-or-focus"],
                             "num": "1.4.13",
                             "versions": [
                                 "2.1"
@@ -807,7 +807,7 @@
                         },
                         {
                             "id": "WCAG2:character-key-shortcuts",
-                            "alt_id": [],
+                            "alt_id": ["character-key-shortcuts"],
                             "num": "2.1.4",
                             "versions": [
                                 "2.1"
@@ -1237,7 +1237,7 @@
                 },
                 {
                     "id": "WCAG2:input-modalities",
-                    "alt_id": [],
+                    "alt_id": ["input-modalities"],
                     "num": "2.5",
                     "versions": [
                         "2.1"
@@ -1247,7 +1247,7 @@
                     "successcriteria": [
                         {
                             "id": "WCAG2:pointer-gestures",
-                            "alt_id": [],
+                            "alt_id": ["pointer-gestures"],
                             "num": "2.5.1",
                             "versions": [
                                 "2.1"
@@ -1258,7 +1258,7 @@
                         },
                         {
                             "id": "WCAG2:pointer-cancellation",
-                            "alt_id": [],
+                            "alt_id": ["pointer-cancellation"],
                             "num": "2.5.2",
                             "versions": [
                                 "2.1"
@@ -1292,7 +1292,7 @@
                         },
                         {
                             "id": "WCAG2:label-in-name",
-                            "alt_id": [],
+                            "alt_id": ["label-in-name"],
                             "num": "2.5.3",
                             "versions": [
                                 "2.1"
@@ -1303,7 +1303,7 @@
                         },
                         {
                             "id": "WCAG2:motion-actuation",
-                            "alt_id": [],
+                            "alt_id": ["motion-actuation"],
                             "num": "2.5.4",
                             "versions": [
                                 "2.1"
@@ -1329,7 +1329,7 @@
                         },
                         {
                             "id": "WCAG2:target-size",
-                            "alt_id": [],
+                            "alt_id": ["target-size"],
                             "num": "2.5.5",
                             "versions": [
                                 "2.1"
@@ -1363,7 +1363,7 @@
                         },
                         {
                             "id": "WCAG2:concurrent-input-mechanisms",
-                            "alt_id": [],
+                            "alt_id": ["concurrent-input-mechanisms"],
                             "num": "2.5.6",
                             "versions": [
                                 "2.1"

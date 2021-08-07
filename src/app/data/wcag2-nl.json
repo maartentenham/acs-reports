@@ -171,6 +171,20 @@
                                     "text": "voor eisen met betrekking tot kleur zie Richtlijn 1.4."
                                 }
                             ]
+                        },
+                        {
+                            "id": "WCAG2:orientation",
+                            "num": "1.3.4",
+                            "handle": "Weergavestand",
+                            "text": "De content beperkt de weergave en bediening niet tot een enkele presentatie-oriëntatie, zoals staand of liggend, tenzij een specifieke presentatie-oriëntatie essentieel is.",
+                            "level": "AA"
+                        },
+                        {
+                            "id": "WCAG2:identify-input-purpose",
+                            "num": "1.3.5",
+                            "handle": "Identificeer het doel van de input",
+                            "text": "Het doel van elk invoerveld waarmee informatie van de gebruiker wordt verzameld, kan door software worden bepaald als het invoerveld een doel dient zoals geïdentificeerd in https://www.w3.org/Translations/WCAG21-nl/#input-purposes.",
+                            "level": "AA"
                         }
                     ]
                 },
@@ -212,7 +226,7 @@
                             "id": "WCAG2:visual-audio-contrast-contrast",
                             "num": "1.4.3",
                             "handle": "Contrast (minimum)",
-                            "text": "De visuele weergave van tekst en afbeeldingen van tekst heeft een contrastverhouding van ten minste 4,5:1, behalve in de volgende gevallen:",
+                            "text": "De visuele weergave van tekst en afbeeldingen van tekst heeft een contrastverhouding van ten minste 4,5:1. Tekst met een lettergrootte van tenminste 18px of dikgedrukt 14px heeft een contrastverhouding van ten minste 3:1. Teksten die onderdeel zijn van decoratieve content of van logo’s hebben geen contrasteis.",
                             "level": "AA",
                             "details": [
                                 {
@@ -245,7 +259,7 @@
                             "id": "WCAG2:visual-audio-contrast-text-presentation",
                             "num": "1.4.5",
                             "handle": "Afbeeldingen van tekst",
-                            "text": "Als de gebruikte technologieën de visuele weergave tot stand kunnen brengen, wordt tekst gebruikt in plaats van afbeeldingen van tekst om informatie over te brengen, behalve in de volgende gevallen:",
+                            "text": "Als de gebruikte technologieën de visuele weergave tot stand kunnen brengen, wordt tekst gebruikt in plaats van afbeeldingen van tekst om informatie over te brengen, behalve als de afbeelding van tekst visueel aangepast kan worden aan de eisen van de gebruiker of als een specifieke weergave van tekst essentieel is voor de informatie die wordt overgebracht.",
                             "level": "AA",
                             "details": [
                                 {
@@ -372,6 +386,34 @@
                                     "text": "logotypes (tekst die onderdeel is van een logo of merknaam) worden als essentieel beschouwd."
                                 }
                             ]
+                        },
+                        {
+                            "id": "WCAG2:reflow",
+                            "num": "1.4.10",
+                            "handle": "Dynamisch aanpassen",
+                            "text": "Content kan zonder verlies van informatie of functionaliteit en zonder te moeten scrollen in twee dimensies, worden weergegeven met een breedte gelijkwaardig aan 320 CSS-pixels (voor verticaal scrollbare content) en met een hoogte gelijkwaardig aan 256 CSS-pixels (voor horizontaal scrollbare content). Dit staat gelijk aan een schermverhouding van 1280x1024 met 400% zoom. Voor delen van de content die voor het gebruik of de betekenis een tweedimensionale lay-out vereisen geldt een uitzondering.",
+                            "level": "AA"
+                        },
+                        {
+                            "id": "WCAG2:non-text-contrast",
+                            "num": "1.4.11",
+                            "handle": "Contrast van niet-tekstuele content",
+                            "text": "De visuele weergave van componenten van de gebruikersinterface en van grafische objecten heeft een contrastverhouding van ten minste 3:1 ten opzichte van aangrenzende kleuren. Voor logo’s geldt een uitzondering.",
+                            "level": "AA"
+                        },
+                        {
+                            "id": "WCAG2:text-spacing",
+                            "num": "1.4.12",
+                            "handle": "Tekstafstand",
+                            "text": "Bij content die wordt geïmplementeerd met opmaaktalen die regelhoogte, regelafstand en woordafstand ondersteunen, is er geen sprake van verlies van content of functionaliteit wanneer deze worden ingesteld of gewijzigd.",
+                            "level": "AA"
+                        },
+                        {
+                            "id": "WCAG2:content-on-hover-or-focus",
+                            "num": "1.4.13",
+                            "handle": "Content bij aanwijzen of focussen",
+                            "text": "Wanneer door via de muis- of toetsenbordfocus aanvullende content zichtbaar wordt en vervolgens weer wordt verborgen, gelden specifieke eisen.",
+                            "level": "AA"
                         }
                     ]
                 }
@@ -381,7 +423,7 @@
             "id": "WCAG2:operable",
             "num": "2",
             "handle": "Bedienbaar",
-            "text": "componenten van de gebruikersinterface en navigatie moeten bedienbaar zijn.",
+            "text": "Componenten van de gebruikersinterface en navigatie moeten bedienbaar zijn.",
             "guidelines": [
                 {
                     "id": "WCAG2:keyboard-operation",
@@ -428,6 +470,14 @@
                             "handle": "Toetsenbord (geen uitzondering)",
                             "text": "Alle functionaliteit van de content is bedienbaar via een toetsenbordinterface zonder specifieke timing te vereisen voor de individuele toetsaanslagen.",
                             "level": "AAA"
+                        },
+                        {
+                            "id": "WCAG2:character-key-shortcuts",
+                            "alt_id": ["character-key-shortcuts"],
+                            "num": "2.1.4",
+                            "handle": "enkel teken sneltoetsen",
+                            "text": "Wanneer een sneltoets in content wordt geïmplementeerd door alleen letters (inclusief hoofd- kleine letters), interpunctietekens, cijfers of symbolen te gebruiken, kan de sneltoets worden uitgezet of opnieuw worden toegewezen aan bijvoorbeeld de Ctrl- of Alt-toets. Anders mag de sneltoets voor een component van de gebruikersinterface alleen actief zijn wanneer de betreffende component de focus heeft.",
+                            "level": "A"
                         }
                     ]
                 },
@@ -441,7 +491,7 @@
                             "id": "WCAG2:time-limits-required-behaviors",
                             "num": "2.2.1",
                             "handle": "Timing aanpasbaar",
-                            "text": "Voor elke tijdslimiet die door de content wordt ingesteld geldt ten minste een van de volgende zaken:",
+                            "text": "Voor elke tijdslimiet die door de content wordt ingesteld, geldt dat de gebruiker deze kan uitzetten, aanpassen of verlengen, tenzij er sprake is van een uitzondering.",
                             "level": "A",
                             "details": [
                                 {
@@ -484,7 +534,7 @@
                             "id": "WCAG2:time-limits-pause",
                             "num": "2.2.2",
                             "handle": "Pauzeren, stoppen, verbergen",
-                            "text": "Voor alle bewegende, knipperende, scrollende of automatisch actualiserende informatie gelden alle volgende zaken:",
+                            "text": "Er is een mechanisme voor de gebruiker om bewegende, knipperende, scrollende of automatisch actualiserende informatie te pauzeren, te stoppen of te verbergen. Dit geldt voor alle bewegende, knipperende of scrollende informatie die (1) automatisch start, (2) langer dan vijf seconden duurt, en (3) parallel met andere content wordt getoond en voor elke soort automatisch actualiserende informatie die (1) automatisch start en (2) parallel met andere content wordt gepresenteerd. Er geldt een uitzondering voor situaties waarin deze informatie essentieel is.",
                             "level": "A",
                             "details": [
                                 {
@@ -548,8 +598,8 @@
                 {
                     "id": "WCAG2:seizure",
                     "num": "2.3",
-                    "handle": "Toevallen",
-                    "text": "Ontwerp content niet op een manier waarvan bekend is dat die toevallen veroorzaakt.",
+                    "handle": "Toevallen en fysieke reacties",
+                    "text": "Ontwerp content niet op een manier waarvan bekend is dat die toevallen of fysieke reacties veroorzaakt.",
                     "successcriteria": [
                         {
                             "id": "WCAG2:seizure-does-not-violate",
@@ -597,7 +647,7 @@
                         {
                             "id": "WCAG2:navigation-mechanisms-focus-order",
                             "num": "2.4.3",
-                            "handle": "Focus volgorde",
+                            "handle": "Focusvolgorde",
                             "text": "Als een webpagina sequentieel genavigeerd kan worden en de navigatiesequenties hebben invloed op de betekenis of het gebruik, dan krijgen focusbare componenten de focus in de juiste volgorde waardoor betekenis en bedienbaarheid behouden blijft.",
                             "level": "A"
                         },
@@ -605,7 +655,7 @@
                             "id": "WCAG2:navigation-mechanisms-refs",
                             "num": "2.4.4",
                             "handle": "Linkdoel (in context)",
-                            "text": "Het doel van elke link kan bepaald worden uit enkel de linktekst of uit de linktekst samen met zijn door software bepaalde linkcontext, behalve daar waar het doel van de link een dubbelzinnige betekenis zou kunnen hebben voor gebruikers in het algemeen.",
+                            "text": "Het linkdoel kan bepaald worden uit enkel de linktekst of uit de linktekst samen met zijn door software bepaalde linkcontext, behalve daar waar het doel van de link een dubbelzinnige betekenis kan hebben voor gebruikers in het algemeen.",
                             "level": "A"
                         },
                         {
@@ -663,6 +713,56 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "WCAG2:input-modalities",
+                    "num": "2.5",
+                    "handle": "Inputmodaliteiten",
+                    "text": "Maak het eenvoudiger voor gebruikers om de functionaliteit te bedienen met andere vormen van invoer dan alleen het toetsenbord.",
+                    "successcriteria": [
+                        {
+                            "id": "WCAG2:pointer-gestures",
+                            "num": "2.5.1",
+                            "handle": "Aanwijzergebaren",
+                            "text": "Functionaliteit waarbij gebruik wordt gemaakt van multipoint- of padgebaseerde bewegingen, kan in principe ook worden bediend worden met een enkele aanwijzer.",
+                            "level": "A"
+                        },
+                        {
+                            "id": "WCAG2:pointer-cancellation",
+                            "num": "2.5.2",
+                            "handle": "Aanwijzerannulering",
+                            "text": "Voor functionaliteit die kan worden bediend met een enkele aanwijzer, gelden diverse beperkingen in het toewijzen aan de functies omlaag, afbreken en ongedaan maken.",
+                            "level": "A"
+                        },
+                        {
+                            "id": "WCAG2:label-in-name",
+                            "num": "2.5.3",
+                            "handle": "Label in naam",
+                            "text": "Bij componenten van de gebruikersinterface met labels die tekst of afbeeldingen van tekst bevatten, bevat de naam de tekst die visueel wordt weergegeven.",
+                            "level": "A"
+                        },
+                        {
+                            "id": "WCAG2:motion-actuation",
+                            "num": "2.5.4",
+                            "handle": "Bewegingsactivering",
+                            "text": "Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when:",
+                            "level": "A"
+                        },
+                        {
+                            "id": "WCAG2:target-size",
+                            "num": "2.5.5",
+                            "handle": "Target Size",
+                            "text": "The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when:",
+                            "level": "AAA"
+                        },
+                        {
+                            "id": "WCAG2:concurrent-input-mechanisms",
+                            "num": "2.5.6",
+                            "handle": "Concurrent Input Mechanisms",
+                            "text": "Web content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.",
+                            "level": "AAA"
+                        }
+                    ]
                 }
             ]
         },
@@ -689,7 +789,7 @@
                             "id": "WCAG2:meaning-other-lang-id",
                             "num": "3.1.2",
                             "handle": "Taal van onderdelen",
-                            "text": "De menselijke taal van elke passage of zin in de content kan door software bepaald worden, behalve waar het gaat om eigennamen, technische termen, woorden van onbepaalde taal en woorden of zinsdelen die deel zijn gaan uitmaken van het jargon van de onmiddellijk omringende tekst.",
+                            "text": "De menselijke taal van elke passage of zin in de content kan door software bepaald worden, behalve waar het gaat om eigennamen, technische termen, woorden uit een onbepaalde taal en woorden of zinsdelen die deel zijn gaan uitmaken van het jargon van de onmiddellijk omringende tekst.",
                             "level": "AA"
                         },
                         {
@@ -732,14 +832,14 @@
                             "id": "WCAG2:consistent-behavior-receive-focus",
                             "num": "3.2.1",
                             "handle": "Bij focus",
-                            "text": "Als een component de focus krijgt, dan veroorzaakt dat geen contextwijziging.",
+                            "text": "Als een component van de gebruikersinterface de focus krijgt, dan veroorzaakt dat geen contextwijziging.",
                             "level": "A"
                         },
                         {
                             "id": "WCAG2:consistent-behavior-unpredictable-change",
                             "num": "3.2.2",
                             "handle": "Bij input",
-                            "text": "Verandering van de instelling van een component van de gebruikersinterface veroorzaakt niet automatisch een contextwijziging tenzij de gebruiker geïnformeerd is over het gedrag vóór het gebruik van dit component.",
+                            "text": "Verandering van de instelling van een component van de gebruikersinterface veroorzaakt niet automatisch een contextwijziging, tenzij de gebruiker vooraf geïnformeerd is over het gedrag.",
                             "level": "A"
                         },
                         {
@@ -774,8 +874,8 @@
                         {
                             "id": "WCAG2:minimize-error-identified",
                             "num": "3.3.1",
-                            "handle": "Fout identificatie",
-                            "text": "Als een invoerfout automatisch ontdekt wordt, dan wordt het onderdeel waar de fout zit geïdentificeerd en de fout wordt tekstueel aan de gebruiker meegedeeld.",
+                            "handle": "Foutidentificatie",
+                            "text": "Als een invoerfout automatisch ontdekt wordt, dan wordt het onderdeel waar de fout zit geïdentificeerd en wordt de fout tekstueel aan de gebruiker meegedeeld.",
                             "level": "A"
                         },
                         {
@@ -796,7 +896,7 @@
                             "id": "WCAG2:minimize-error-reversible",
                             "num": "3.3.4",
                             "handle": "Foutpreventie (wettelijk, financieel, gegevens)",
-                            "text": "Voor webpagina's die wettelijke verplichtingen of financiële transacties voor de gebruiker uitvoeren, die, door de gebruiker te beheren gegevens in gegevensopslagplaatsen verwijderen of wijzigen, of die antwoorden van de gebruiker verzenden, geldt ten minste één van de volgende zaken:",
+                            "text": "Voor webpagina's die vergaande gevolgen voor de gebruiker uitvoeren, geldt ten minste dat verzending ongedaan gemaakt kan worden, dat door de gebruiker ingevoerde gegevens worden gecontroleerd op invoerfouten en de gebruiker de mogelijkheid krijgt om ze te verbeteren óf dat er een mechanisme beschikbaar is voor het beoordelen, bevestigen en verbeteren van informatie voordat de verzending wordt voltooid.",
                             "level": "AA",
                             "details": [
                                 {
@@ -885,7 +985,7 @@
                             "id": "WCAG2:ensure-compat-rsv",
                             "num": "4.1.2",
                             "handle": "Naam, rol, waarde",
-                            "text": "Voor alle componenten van de gebruikersinterface (inclusief, maar niet uitsluitend voor formulierelementen, links en door scripts gegenereerde componenten), kunnen de naam (name) en rol (role), door software bepaald worden; toestanden (states), eigenschappen (properties) en waarden (values) die door de gebruiker ingesteld kunnen worden kunnen door software bepaald worden; en kennisgeving van veranderingen in deze items is beschikbaar voor user agents, met inbegrip van hulptechnologieën.",
+                            "text": "Voor alle componenten van de gebruikersinterface (inclusief, maar niet uitsluitend voor formulierelementen, links en door scripts gegenereerde componenten), kunnen de naam (name) en rol (role) door software bepaald worden; toestanden (states), eigenschappen (properties) en waarden (values) die door de gebruiker ingesteld kunnen worden, kunnen door software ingesteld worden; en kennisgeving van veranderingen in deze items is beschikbaar voor user agents, met inbegrip van hulptechnologieën.",
                             "level": "A",
                             "details": [
                                 {
